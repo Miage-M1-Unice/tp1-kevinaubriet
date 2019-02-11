@@ -1,6 +1,8 @@
 package fr.unice.miage;
 
 import java.io.File;
+import java.io.FilenameFilter;
+import java.util.logging.Filter;
 
 public class MyFile {
 
@@ -36,6 +38,17 @@ public class MyFile {
         }
     }
 
+    private void listFile3(File chemin, FilenameFilter filter){
+        for (File elem:chemin.listFiles(filter)) {
+            if(elem.isDirectory()){
+                listFile3(elem,filter);
+            }else{
+                System.out.println(elem);
+            }
+
+        }
+    }
+
 
     public static void main(String[] args){
 
@@ -44,7 +57,11 @@ public class MyFile {
 
         fileTest.listFile();
         System.out.println("\n------------------------------\n");
+
         fileTest.listFile2(fileTest.getFile());
+        System.out.println("\n------------------------------\n");
+
+        fileTest.listFile3(fileTest.getFile(), new MyFilenameFilter(".java"));
 
 
 
