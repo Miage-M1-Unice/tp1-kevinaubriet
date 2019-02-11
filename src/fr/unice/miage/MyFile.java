@@ -20,13 +20,13 @@ public class MyFile {
         return file;
     }
 
-    private void listFile(){
+    public void listFile(){
         for (String elem:this.file.list()) {
             System.out.println(elem);
         }
     }
 
-    private void listFile2(File chemin){
+    public void listFile2(File chemin){
         for (File elem:chemin.listFiles()) {
             if(elem.isDirectory()){
                 listFile2(elem);
@@ -38,10 +38,11 @@ public class MyFile {
         }
     }
 
-    private void listFile3(File chemin, FilenameFilter filter){
+    public void listFile3(File chemin){
+       MyFilenameFilter filter =  new MyFilenameFilter(".java");
         for (File elem:chemin.listFiles(filter)) {
             if(elem.isDirectory()){
-                listFile3(elem,filter);
+                listFile3(elem);
             }else{
                 System.out.println(elem);
             }
@@ -49,22 +50,33 @@ public class MyFile {
         }
     }
 
+    public void listFile3Interne(File chemin){
+        MyInterneFilenameFilter filter =  new MyInterneFilenameFilter(".java");
+        for (File elem:chemin.listFiles(filter)) {
+            if(elem.isDirectory()){
+                listFile3(elem);
+            }else{
+                System.out.println(elem);
+            }
 
-    public static void main(String[] args){
-
-
-        MyFile fileTest =  new MyFile();
-
-        fileTest.listFile();
-        System.out.println("\n------------------------------\n");
-
-        fileTest.listFile2(fileTest.getFile());
-        System.out.println("\n------------------------------\n");
-
-        fileTest.listFile3(fileTest.getFile(), new MyFilenameFilter(".java"));
-
-
-
-
+        }
     }
+
+    // classe interne
+    private class MyInterneFilenameFilter implements FilenameFilter{
+        private String filtre;
+
+        public MyInterneFilenameFilter(String filtre) {
+            this.filtre = filtre;
+        }
+
+        @Override
+        public boolean accept(File dir, String name) {
+            File file =  new File(dir.getPath() + "/" + name);
+            return name.toLowerCase().endsWith(filtre) || file.isDirectory();
+        }
+    }
+
+
+
 }
