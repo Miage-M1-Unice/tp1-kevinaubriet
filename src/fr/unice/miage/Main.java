@@ -16,9 +16,10 @@ public class Main {
         //fileTest.listFile3(fileTest.getFile());
 
         // Liste filtrée dans une classe interne nommée,
-        fileTest.listFile3Interne(fileTest.getFile());
+        //fileTest.listFile3Interne(fileTest.getFile());
 
-
+        //  Liste filtrée dans une classe anonyme
+        fileTest.listFile4anonyme(fileTest.getFile(),".java");
 
 
 

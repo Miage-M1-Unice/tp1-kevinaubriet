@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.util.logging.Filter;
 
+
+
 public class MyFile {
 
     private File file;
@@ -62,7 +64,8 @@ public class MyFile {
         }
     }
 
-    // classe interne
+
+    // classe interne nommé
     private class MyInterneFilenameFilter implements FilenameFilter{
         private String filtre;
 
@@ -76,6 +79,31 @@ public class MyFile {
             return name.toLowerCase().endsWith(filtre) || file.isDirectory();
         }
     }
+
+
+    public void listFile4anonyme(File chemin, String filtreA){
+        for (File elem:chemin.listFiles(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                File file =  new File(dir.getPath() + "/" + name);
+                return name.toLowerCase().endsWith(filtreA) || file.isDirectory();
+            }
+        })) {
+            if(elem.isDirectory()){
+                listFile3(elem);
+            }else{
+                System.out.println(elem);
+            }
+
+        }
+    }
+
+
+
+
+
+
+
 
 
 
