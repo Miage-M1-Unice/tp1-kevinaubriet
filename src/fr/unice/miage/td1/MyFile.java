@@ -1,9 +1,7 @@
-package fr.unice.miage;
+package fr.unice.miage.td1;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.util.logging.Filter;
-
 
 
 public class MyFile {

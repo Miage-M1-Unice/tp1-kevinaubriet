@@ -1,4 +1,4 @@
-package fr.unice.miage;
+package fr.unice.miage.td1;
 
 import java.io.IOException;
 
