@@ -1,6 +1,7 @@
 package fr.unice.miage.td2;
 
 
+import java.awt.*;
 import java.lang.reflect.*;
 import java.io.*;
 
@@ -122,6 +123,9 @@ public class AnalyseurDeClasse {
 
 
 public static void main(String[] args) {
+
+    System.out.println(new GenericToString().toString(new Point(12,24)));
+
         boolean ok = false;
 
         while(!ok) {
