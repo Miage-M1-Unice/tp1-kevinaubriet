@@ -21,6 +21,23 @@ public class Selit {
         }
     }
 
+    void ecriture(String nomfichier) throws IOException {
+        PrintStream ps = System.out;
+
+        File file = new File("./"+nomfichier);
+        file.createNewFile();
+
+        Scanner sc = new Scanner(System.in);
+        System.setOut(new PrintStream(file));
+        System.out.println(sc.nextLine());
+
+        System.setOut(ps);
+
+
+
+
+    }
+
     static public void main(String[] args) {
 
         Selit selit = new Selit();
@@ -31,5 +48,13 @@ public class Selit {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+
+        try {
+            selit.ecriture("outpout.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
