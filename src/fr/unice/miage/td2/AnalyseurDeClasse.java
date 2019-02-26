@@ -124,16 +124,29 @@ public class AnalyseurDeClasse {
 
 public static void main(String[] args) {
 
-    System.out.println(new GenericToString().toString(new Point(12,24)));
+    try {
+        System.out.println(new GenericToString().toString(new Point(12,24),1));
 
-        boolean ok = false;
+        Polygon pol = new Polygon(new int[]{10, 20, 30}, new int[]{20,30, 40}, 3);
+        pol.getBounds();
+        System.out.println(new GenericToString().toString(pol, 2));
+    } catch (IllegalAccessException e) {
+        e.printStackTrace();
+    }
 
+
+    boolean ok = false;
+
+
+        /*
         while(!ok) {
+
             try {
                 System.out.print("Entrez le nom d'une classe (ex : java.util.Date): ");
                 String nomClasse = litChaineAuClavier();
 
                 analyseClasse(nomClasse);
+
 
                 ok = true;
             }
@@ -143,6 +156,6 @@ public static void main(String[] args) {
             catch(IOException e) {
                 System.out.println("Erreur d'E/S!");
             }
-        }
+        }*/
     }
 }
