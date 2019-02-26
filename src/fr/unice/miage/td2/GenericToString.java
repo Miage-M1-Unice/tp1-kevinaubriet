@@ -68,7 +68,7 @@ public class GenericToString {
         return res;
     }
 
-    
+
     public static ArrayList<Field> getAllFields(Class<?> type) {
         ArrayList<Field> fields = new ArrayList<>();
 
